@@ -5,53 +5,59 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table (name = "users")
-public class User {
+@Table(name = "userMessage")
+public class UserMessage {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "name")
-    private String name;
-    //можно не указывать Column name, если оно совпадает с названием столбца в таблице
-    private int age;
+    private String user_name;
+    private String message;
+    private String to_user;
 
-    public User() {
+    public UserMessage() {
     }
 
-    public User(String name, int age) {
-        this.name = name;
-        this.age = age;
+    public UserMessage(String user_name, String message, String to_user) {
+        this.user_name = user_name;
+        this.message = message;
+        this.to_user = to_user;
     }
 
-  
     public int getId() {
         return id;
     }
 
     public String getName() {
-        return name;
+        return user_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String user_name) {
+        this.user_name = user_name;
     }
 
-    public int getAge() {
-        return age;
+    public String message() {
+        return message;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void message(String message) {
+        this.message = message;
     }
 
+    public String to_user() {
+        return to_user;
+    }
+
+    public void to_user(String to_user) {
+        this.to_user = to_user;
+    }
 
     @Override
     public String toString() {
-        return "models.User{" +
+        return "models.userMessage{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
+                ", name='" + user_name + '\'' +
+                ", message=" + message +
                 '}';
     }
 }

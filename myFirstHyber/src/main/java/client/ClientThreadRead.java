@@ -1,4 +1,4 @@
-package chatprom;
+package client;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,6 +8,8 @@ import java.net.Socket;
 public class ClientThreadRead extends Thread {
 
     private Socket socket;
+
+    private Socket socket1;
 
     public ClientThreadRead(Socket socket) throws IOException {
         this.socket = socket;
@@ -21,29 +23,27 @@ public class ClientThreadRead extends Thread {
         String str;
 
         try {
-            BufferedReader  br = null;
+            BufferedReader br = null;
             br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
             while (true) {
                 str = br.readLine();
                 if (str.equals("bye client")) {
                     System.out.println(str);
-                    socket.close();
                     br.close();
+                    //socket.close();
+
 
                     break;
                 }
 
-                System.out.println(str); // пишем сообщение с сервера на консоль
+                System.out.println(str);
             }
         } catch (IOException e) {
             e.printStackTrace(System.out);
 
         }
     }
-
-
-
 
 
 }

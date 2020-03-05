@@ -1,9 +1,12 @@
-package chatprom;
+package main;
+
+import client.ClientThreadRead;
+import client.ClientThreadWrite;
 
 import java.io.IOException;
 import java.net.Socket;
 
-public class ThreadClient {
+public class MainThreadClient {
     public static void main(String[] args) throws IOException {
         int portNumber = 1777;
 
